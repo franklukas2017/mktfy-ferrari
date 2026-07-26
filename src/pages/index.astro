@@ -7,6 +7,11 @@ import StatCard from '../components/StatCard.astro';
 import ContactForm from '../components/ContactForm.astro';
 import Footer from '../components/Footer.astro';
 import Faq from '../components/Faq.astro';
+import { Image } from 'astro:assets';
+
+import roasImage from '../assets/roas_dashboard.jpg';
+import growthImage from '../assets/growth_chart.jpg';
+import cpaImage from '../assets/cpa_strategy.jpg';
 ---
 
 <Layout title="Mktfy | Assessoria de Tráfego Pago e Performance">
@@ -64,21 +69,21 @@ import Faq from '../components/Faq.astro';
     <h2 class="text-display-md md:text-display-lg uppercase mb-xl leading-tight">Resultados que falam mais alto</h2>
     <div class="max-w-[1280px] mx-auto grid grid-cols-1 md:grid-cols-3 gap-md">
       <div class="bg-canvas text-ink text-left p-0 border-none relative overflow-hidden h-[400px]">
-        <img src="/roas_dashboard.jpg" alt="ROAS" class="absolute inset-0 w-full h-full object-cover opacity-50 hover:opacity-75 transition-opacity" />
+        <Image src={roasImage} alt="ROAS" class="absolute inset-0 w-full h-full object-cover opacity-50 hover:opacity-75 transition-opacity" />
         <div class="absolute bottom-0 left-0 p-md w-full bg-gradient-to-t from-canvas to-transparent">
           <h3 class="text-title-md uppercase mb-xxs">ROAS de 10x+</h3>
           <p class="text-body-md text-body">Estratégias validadas de alto retorno.</p>
         </div>
       </div>
       <div class="bg-canvas text-ink text-left p-0 border-none relative overflow-hidden h-[400px]">
-        <img src="/growth_chart.jpg" alt="Growth" class="absolute inset-0 w-full h-full object-cover opacity-50 hover:opacity-75 transition-opacity" />
+        <Image src={growthImage} alt="Growth" class="absolute inset-0 w-full h-full object-cover opacity-50 hover:opacity-75 transition-opacity" />
         <div class="absolute bottom-0 left-0 p-md w-full bg-gradient-to-t from-canvas to-transparent">
           <h3 class="text-title-md uppercase mb-xxs">Crescimento de 250%</h3>
           <p class="text-body-md text-body">Escala consistente e previsível.</p>
         </div>
       </div>
       <div class="bg-canvas text-ink text-left p-0 border-none relative overflow-hidden h-[400px]">
-        <img src="/cpa_strategy.jpg" alt="CPA" class="absolute inset-0 w-full h-full object-cover opacity-50 hover:opacity-75 transition-opacity" />
+        <Image src={cpaImage} alt="CPA" class="absolute inset-0 w-full h-full object-cover opacity-50 hover:opacity-75 transition-opacity" />
         <div class="absolute bottom-0 left-0 p-md w-full bg-gradient-to-t from-canvas to-transparent">
           <h3 class="text-title-md uppercase mb-xxs">CPA reduzido em 40%</h3>
           <p class="text-body-md text-body">Otimização focada em custo por aquisição.</p>

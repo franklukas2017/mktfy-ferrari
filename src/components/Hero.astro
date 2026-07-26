@@ -1,5 +1,7 @@
 ---
 // Hero.astro
+import { Image } from 'astro:assets';
+import heroImage from '../assets/gerenciador-de-anuncios.jpg';
 ---
 
 <section class="relative w-full pt-xxl pb-xl px-md md:px-lg bg-canvas border-b border-hairline">
@@ -20,8 +22,8 @@
     
     <div class="w-full max-w-5xl mx-auto rounded-none border border-hairline bg-canvas-elevated p-xxs relative overflow-hidden shadow-2xl">
       <div class="relative w-full aspect-[16/9] overflow-hidden bg-black">
-        <img 
-          src="/gerenciador-de-anuncios.jpg" 
+        <Image 
+          src={heroImage} 
           alt="Dashboard de Resultados" 
           class="w-full h-full object-cover object-top opacity-90"
           fetchpriority="high"
