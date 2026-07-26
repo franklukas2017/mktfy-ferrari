@@ -69,22 +69,22 @@ import cpaImage from '../assets/cpa_strategy.jpg';
     <h2 class="text-display-md md:text-display-lg uppercase mb-xl leading-tight">Resultados que falam mais alto</h2>
     <div class="max-w-[1280px] mx-auto grid grid-cols-1 md:grid-cols-3 gap-md">
       <div class="bg-canvas text-ink text-left p-0 border-none relative overflow-hidden h-[400px]">
-        <Image src={roasImage} alt="ROAS" class="absolute inset-0 w-full h-full object-cover opacity-50 hover:opacity-75 transition-opacity" />
-        <div class="absolute bottom-0 left-0 p-md w-full bg-gradient-to-t from-canvas to-transparent">
+        <Image src={roasImage} alt="ROAS" class="absolute inset-0 w-full h-full object-cover opacity-50 hover:opacity-75 transition-opacity cursor-pointer lightbox-trigger" />
+        <div class="absolute bottom-0 left-0 p-md w-full bg-gradient-to-t from-canvas to-transparent pointer-events-none">
           <h3 class="text-title-md uppercase mb-xxs">ROAS de 10x+</h3>
           <p class="text-body-md text-body">Estratégias validadas de alto retorno.</p>
         </div>
       </div>
       <div class="bg-canvas text-ink text-left p-0 border-none relative overflow-hidden h-[400px]">
-        <Image src={growthImage} alt="Growth" class="absolute inset-0 w-full h-full object-cover opacity-50 hover:opacity-75 transition-opacity" />
-        <div class="absolute bottom-0 left-0 p-md w-full bg-gradient-to-t from-canvas to-transparent">
+        <Image src={growthImage} alt="Growth" class="absolute inset-0 w-full h-full object-cover opacity-50 hover:opacity-75 transition-opacity cursor-pointer lightbox-trigger" />
+        <div class="absolute bottom-0 left-0 p-md w-full bg-gradient-to-t from-canvas to-transparent pointer-events-none">
           <h3 class="text-title-md uppercase mb-xxs">Crescimento de 250%</h3>
           <p class="text-body-md text-body">Escala consistente e previsível.</p>
         </div>
       </div>
       <div class="bg-canvas text-ink text-left p-0 border-none relative overflow-hidden h-[400px]">
-        <Image src={cpaImage} alt="CPA" class="absolute inset-0 w-full h-full object-cover opacity-50 hover:opacity-75 transition-opacity" />
-        <div class="absolute bottom-0 left-0 p-md w-full bg-gradient-to-t from-canvas to-transparent">
+        <Image src={cpaImage} alt="CPA" class="absolute inset-0 w-full h-full object-cover opacity-50 hover:opacity-75 transition-opacity cursor-pointer lightbox-trigger" />
+        <div class="absolute bottom-0 left-0 p-md w-full bg-gradient-to-t from-canvas to-transparent pointer-events-none">
           <h3 class="text-title-md uppercase mb-xxs">CPA reduzido em 40%</h3>
           <p class="text-body-md text-body">Otimização focada em custo por aquisição.</p>
         </div>
@@ -128,5 +128,66 @@ import cpaImage from '../assets/cpa_strategy.jpg';
     </div>
   </section>
 
+  <!-- Lightbox Modal -->
+  <div id="lightbox-modal" class="fixed inset-0 z-[100] bg-black bg-opacity-90 hidden flex-col items-center justify-center p-sm backdrop-blur-sm transition-opacity duration-300 opacity-0">
+    <button id="lightbox-close" class="absolute top-md right-md text-white text-display-md p-xs hover:text-primary transition-colors cursor-pointer z-50">
+      &times;
+    </button>
+    <div class="relative w-full max-w-5xl max-h-[80vh] flex items-center justify-center">
+      <img id="lightbox-img" src="" alt="Zoomed result" class="max-w-full max-h-[80vh] object-contain border border-hairline shadow-2xl" />
+    </div>
+    <p class="text-white mt-sm text-body-sm opacity-70">Toque fora da imagem para fechar</p>
+  </div>
+
   <Footer />
 </Layout>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const triggers = document.querySelectorAll('.lightbox-trigger');
+    const modal = document.getElementById('lightbox-modal');
+    const modalImg = document.getElementById('lightbox-img');
+    const closeBtn = document.getElementById('lightbox-close');
+
+    if (!modal || !modalImg || !closeBtn) return;
+
+    const openLightbox = (src) => {
+      modalImg.src = src;
+      modal.classList.remove('hidden');
+      modal.classList.add('flex');
+      // Pequeno delay para a animação de opacidade funcionar
+      setTimeout(() => {
+        modal.classList.remove('opacity-0');
+        modal.classList.add('opacity-100');
+      }, 10);
+      document.body.style.overflow = 'hidden'; // Evita scroll do fundo
+    };
+
+    const closeLightbox = () => {
+      modal.classList.remove('opacity-100');
+      modal.classList.add('opacity-0');
+      setTimeout(() => {
+        modal.classList.add('hidden');
+        modal.classList.remove('flex');
+        modalImg.src = '';
+        document.body.style.overflow = '';
+      }, 300);
+    };
+
+    triggers.forEach(trigger => {
+      trigger.addEventListener('click', (e) => {
+        const src = e.target.src;
+        if (src) openLightbox(src);
+      });
+    });
+
+    closeBtn.addEventListener('click', closeLightbox);
+    
+    // Fecha ao clicar fora da imagem
+    modal.addEventListener('click', (e) => {
+      if (e.target === modal || e.target.tagName !== 'IMG') {
+        closeLightbox();
+      }
+    });
+  });
+</script>
