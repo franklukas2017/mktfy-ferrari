@@ -1,0 +1,84 @@
+---
+// ContactForm.astro
+---
+
+<div class="bg-canvas-elevated p-md md:p-xl rounded-none w-full max-w-2xl mx-auto border border-hairline">
+  <form id="contact-form" class="flex flex-col gap-sm">
+    <div class="flex flex-col gap-xxs">
+      <label for="name" class="text-caption-uppercase text-ink uppercase">Nome completo *</label>
+      <input required type="text" id="name" name="name" placeholder="Seu nome completo" 
+        class="bg-canvas text-ink text-body-md border border-hairline rounded-sm h-12 px-xs focus:outline-none focus:border-primary transition-colors" />
+    </div>
+    
+    <div class="flex flex-col gap-xxs">
+      <label for="email" class="text-caption-uppercase text-ink uppercase">E-mail *</label>
+      <input required type="email" id="email" name="email" placeholder="seu@email.com" 
+        class="bg-canvas text-ink text-body-md border border-hairline rounded-sm h-12 px-xs focus:outline-none focus:border-primary transition-colors" />
+    </div>
+
+    <div class="flex flex-col gap-xxs">
+      <label for="phone" class="text-caption-uppercase text-ink uppercase">WhatsApp *</label>
+      <input required type="text" id="phone" name="phone" placeholder="(11) 99999-9999" 
+        class="bg-canvas text-ink text-body-md border border-hairline rounded-sm h-12 px-xs focus:outline-none focus:border-primary transition-colors" />
+    </div>
+
+    <div class="flex flex-col gap-xxs">
+      <label for="challenge" class="text-caption-uppercase text-ink uppercase">Qual o seu maior desafio hoje?</label>
+      <textarea id="challenge" name="challenge" rows="4" placeholder="Descreva brevemente..." 
+        class="bg-canvas text-ink text-body-md border border-hairline rounded-sm p-xs focus:outline-none focus:border-primary transition-colors resize-none"></textarea>
+    </div>
+
+    <button type="submit" class="bg-primary text-on-primary text-button uppercase rounded-none h-12 mt-xs hover:bg-primary-active transition-colors w-full">
+      Solicitar Consultoria
+    </button>
+    
+    <div id="form-message" class="text-caption text-center hidden mt-xxs"></div>
+  </form>
+</div>
+
+<script>
+  const form = document.getElementById('contact-form') as HTMLFormElement;
+  const messageEl = document.getElementById('form-message');
+
+  if (form) {
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      
+      const submitBtn = form.querySelector('button[type="submit"]') as HTMLButtonElement;
+      const originalText = submitBtn.textContent;
+      submitBtn.textContent = 'Enviando...';
+      submitBtn.disabled = true;
+      
+      try {
+        const formData = new FormData(form);
+        const data = Object.fromEntries(formData.entries());
+        
+        const response = await fetch('/api/contact', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(data),
+        });
+
+        if (response.ok) {
+          if (messageEl) {
+            messageEl.textContent = 'Solicitação enviada com sucesso! Entraremos em contato em breve.';
+            messageEl.className = 'text-caption text-semantic-success text-center block mt-xxs';
+          }
+          form.reset();
+        } else {
+          throw new Error('Erro ao enviar formulário');
+        }
+      } catch (error) {
+        if (messageEl) {
+          messageEl.textContent = 'Ocorreu um erro ao enviar. Tente novamente mais tarde.';
+          messageEl.className = 'text-caption text-semantic-warning text-center block mt-xxs';
+        }
+      } finally {
+        submitBtn.textContent = originalText;
+        submitBtn.disabled = false;
+      }
+    });
+  }
+</script>

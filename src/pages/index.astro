@@ -1,0 +1,127 @@
+---
+import Layout from '../layouts/Layout.astro';
+import TopNav from '../components/TopNav.astro';
+import Hero from '../components/Hero.astro';
+import FeatureCard from '../components/FeatureCard.astro';
+import StatCard from '../components/StatCard.astro';
+import ContactForm from '../components/ContactForm.astro';
+import Footer from '../components/Footer.astro';
+import Faq from '../components/Faq.astro';
+---
+
+<Layout title="Mktfy | Assessoria de Tráfego Pago e Performance">
+  <TopNav />
+  
+  <Hero />
+
+  <!-- Dores do Cliente Section -->
+  <section class="py-xxl px-md md:px-lg bg-canvas border-b border-hairline">
+    <div class="max-w-[1280px] mx-auto">
+      <h2 class="text-display-lg text-ink text-center mb-xl max-w-4xl mx-auto uppercase">
+        Cansado de agências que só gastam sua <span class="text-primary">verba sem retorno</span>?
+      </h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-md">
+        <FeatureCard icon="warning" title="Atendimento genérico" description="Falta de proximidade e respostas demoradas." />
+        <FeatureCard icon="warning" title="Sem estratégia real" description="Foco apenas em apertar botões, não em negócios." />
+        <FeatureCard icon="warning" title="Desculpas por falta de resultado" description="Pedem mais tempo quando não entregam." />
+        <FeatureCard icon="warning" title="Foco em volume" description="Tratam sua empresa como apenas mais um número." />
+        <FeatureCard icon="warning" title="Falta de transparência" description="Ocultam os dados reais das campanhas." />
+        <FeatureCard icon="warning" title="Superficialidade" description="Não buscam entender como seu negócio realmente funciona." />
+      </div>
+    </div>
+  </section>
+
+  <!-- Autoridade Section -->
+  <section class="py-xxl px-md md:px-lg bg-canvas">
+    <div class="max-w-[1280px] mx-auto">
+      <div class="text-center mb-xl">
+        <h2 class="text-display-lg text-ink mb-sm uppercase">Uma assessoria feita por quem vive de <span class="text-primary">performance</span></h2>
+        <p class="text-body-md text-body max-w-3xl mx-auto">
+          Na MktFy, você fala direto com quem pensa e executa sua estratégia. Aqui, seu negócio tem foco total — como se fosse meu próprio projeto.
+        </p>
+      </div>
+      
+      <div class="grid grid-cols-2 md:grid-cols-4 border border-hairline mb-xxl">
+        <StatCard value="10M+" label="em vendas geradas" />
+        <StatCard value="40k+" label="gerenciados/mês" />
+        <StatCard value="Direto" label="atendimento com estrategista" />
+        <StatCard value="ROI" label="foco em escala inteligente" />
+      </div>
+
+      <!-- Como funciona -->
+      <h3 id="metodo" class="text-display-md text-ink text-center mb-lg uppercase">Como funciona a assessoria</h3>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-md">
+        <FeatureCard number="1" title="Diagnóstico" description="Análise profunda do seu negócio e identificação de oportunidades ocultas." />
+        <FeatureCard number="2" title="Estratégia" description="Planejamento sob medida para os seus objetivos de faturamento." />
+        <FeatureCard number="3" title="Execução" description="Criação e otimização implacável das campanhas de anúncios." />
+        <FeatureCard number="4" title="Relatórios" description="Transparência total com foco nas métricas que importam." />
+      </div>
+    </div>
+  </section>
+
+  <!-- Livery Band (Resultados) -->
+  <section id="resultados" class="py-xxl px-md md:px-lg bg-primary text-ink text-center border-y border-hairline">
+    <h2 class="text-display-lg uppercase mb-xl">Resultados que falam mais alto</h2>
+    <div class="max-w-[1280px] mx-auto grid grid-cols-1 md:grid-cols-3 gap-md">
+      <div class="bg-canvas text-ink text-left p-0 border-none relative overflow-hidden h-[400px]">
+        <img src="/roas_dashboard.jpg" alt="ROAS" class="absolute inset-0 w-full h-full object-cover opacity-50 hover:opacity-75 transition-opacity" />
+        <div class="absolute bottom-0 left-0 p-md w-full bg-gradient-to-t from-canvas to-transparent">
+          <h3 class="text-title-md uppercase mb-xxs">ROAS de 10x+</h3>
+          <p class="text-body-md text-body">Estratégias validadas de alto retorno.</p>
+        </div>
+      </div>
+      <div class="bg-canvas text-ink text-left p-0 border-none relative overflow-hidden h-[400px]">
+        <img src="/growth_chart.jpg" alt="Growth" class="absolute inset-0 w-full h-full object-cover opacity-50 hover:opacity-75 transition-opacity" />
+        <div class="absolute bottom-0 left-0 p-md w-full bg-gradient-to-t from-canvas to-transparent">
+          <h3 class="text-title-md uppercase mb-xxs">Crescimento de 250%</h3>
+          <p class="text-body-md text-body">Escala consistente e previsível.</p>
+        </div>
+      </div>
+      <div class="bg-canvas text-ink text-left p-0 border-none relative overflow-hidden h-[400px]">
+        <img src="/cpa_strategy.jpg" alt="CPA" class="absolute inset-0 w-full h-full object-cover opacity-50 hover:opacity-75 transition-opacity" />
+        <div class="absolute bottom-0 left-0 p-md w-full bg-gradient-to-t from-canvas to-transparent">
+          <h3 class="text-title-md uppercase mb-xxs">CPA reduzido em 40%</h3>
+          <p class="text-body-md text-body">Otimização focada em custo por aquisição.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Editorial Light Band (Depoimentos) -->
+  <section class="py-xxl px-md md:px-lg bg-canvas-light text-body-on-light border-b border-hairline-on-light">
+    <div class="max-w-[1280px] mx-auto">
+      <h2 class="text-display-md text-center mb-xl uppercase">O que nossos clientes dizem</h2>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-md">
+        <FeatureCard theme="light" icon="star" title="Ecommerce">
+          <p class="text-body-md italic mt-sm">"É como ter um sócio cuidando do meu marketing, só que melhor."</p>
+        </FeatureCard>
+        <FeatureCard theme="light" icon="star" title="Marcenaria">
+          <p class="text-body-md italic mt-sm">"Depois de várias agências, finalmente resultados consistentes."</p>
+        </FeatureCard>
+        <FeatureCard theme="light" icon="star" title="Energia Solar">
+          <p class="text-body-md italic mt-sm">"Meu investimento em marketing finalmente está valendo a pena!"</p>
+        </FeatureCard>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section class="py-xxl px-md md:px-lg bg-canvas border-b border-hairline">
+    <div class="max-w-[1280px] mx-auto">
+      <h2 class="text-display-md text-ink text-center mb-xl uppercase">Perguntas Frequentes</h2>
+      <Faq />
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="consultoria" class="py-xxl px-md md:px-lg bg-canvas">
+    <div class="max-w-4xl mx-auto">
+      <h2 class="text-display-lg text-ink text-center mb-sm uppercase">Solicite sua Consultoria <span class="text-primary">Gratuita</span></h2>
+      <p class="text-body-md text-body text-center mb-xl">Preencha o formulário abaixo e descubra como posso acelerar os resultados da sua empresa</p>
+      
+      <ContactForm />
+    </div>
+  </section>
+
+  <Footer />
+</Layout>
