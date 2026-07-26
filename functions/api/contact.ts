@@ -1,4 +1,4 @@
-export async function onRequestPost(context) {
+export async function onRequestPost(context: any) {
   try {
     const request = context.request;
     
